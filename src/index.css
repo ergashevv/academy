@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 180 40% 8%;
+    --foreground: 0 0% 100%;
+
+    --card: 180 35% 12%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 180 35% 10%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 142 76% 36%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 180 30% 15%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 180 25% 20%;
+    --muted-foreground: 180 10% 65%;
+
+    --accent: 142 100% 50%;
+    --accent-foreground: 180 40% 8%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 180 20% 20%;
+    --input: 180 25% 18%;
+    --ring: 142 76% 36%;
+
+    --radius: 1rem;
+
+    --gradient-primary: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 100% 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(180 40% 8%), hsl(180 35% 10%));
+    --gradient-card: linear-gradient(135deg, hsl(180 35% 12%), hsl(180 30% 15%));
+    
+    --shadow-glow: 0 0 30px hsl(142 100% 50% / 0.2);
+    --shadow-card: 0 10px 40px -10px hsl(0 0% 0% / 0.3);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(142 100% 50% / 0.2);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(142 100% 50% / 0.4);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideIn 0.5s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.4s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
