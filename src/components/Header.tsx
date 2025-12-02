@@ -83,7 +83,7 @@ const Header = () => {
           <div className="flex items-center gap-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <button className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-primary bg-background hover:bg-primary/10 transition-colors text-foreground font-medium">
+                <button className="flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-primary bg-background hover:bg-primary/10 transition-colors text-foreground font-medium">
                   {language}
                   <ChevronDown className="w-4 h-4" />
                 </button>
