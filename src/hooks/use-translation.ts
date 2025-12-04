@@ -11,7 +11,8 @@ type TranslationPath =
   | 'gallery'
   | 'footer'
   | 'finalCTA'
-  | 'common';
+  | 'common'
+  | 'application';
 
 type TranslationKeys<T extends TranslationPath> = keyof typeof translations.uz[T];
 

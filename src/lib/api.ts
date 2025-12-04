@@ -254,5 +254,18 @@ export const api = {
     if (!response.ok) throw new Error('Failed to fetch completed projects');
     return response.json();
   },
+
+  // Contact/Application
+  submitContact: async (data: { full_name: string; phone_number: string; description: string }, language: string = 'uz'): Promise<any> => {
+    const response = await fetch(getApiUrl('contact/', language), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to submit contact');
+    return response.json();
+  },
 };
 

@@ -10,6 +10,13 @@ import {
   CarouselPrevious,
   type CarouselApi,
 } from "@/components/ui/carousel";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
 
 const Testimonials = () => {
   const { data: commentsData, isLoading: commentsLoading } = useComments();
@@ -17,6 +24,8 @@ const Testimonials = () => {
   const { t } = useTranslation();
   const [api, setApi] = useState<CarouselApi>();
   const [current, setCurrent] = useState(0);
+  const [selectedTestimonial, setSelectedTestimonial] = useState<typeof testimonials[0] | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   
   const isLoading = commentsLoading || titleLoading;
   
@@ -176,7 +185,11 @@ const Testimonials = () => {
                     className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
                   >
                     <div 
-                      className={`bg-card rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-7 transition-all duration-500 ease-out flex flex-col group relative overflow-hidden h-full ${
+                      onClick={() => {
+                        setSelectedTestimonial(testimonial);
+                        setIsModalOpen(true);
+                      }}
+                      className={`bg-card rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-7 transition-all duration-500 ease-out flex flex-col group relative overflow-hidden h-full cursor-pointer ${
                         isActive 
                           ? 'scale-[1.03] md:scale-[1.05] border-2 border-primary/60 -translate-y-1 md:-translate-y-2 z-20 opacity-100' 
                           : isPrev || isNext
@@ -337,6 +350,62 @@ const Testimonials = () => {
           )
         )}
       </div>
+
+      {/* Modal for full testimonial */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-2xl bg-card/95 backdrop-blur-xl border-border/50">
+          {selectedTestimonial && (
+            <>
+              <DialogHeader>
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-16 h-16 rounded-full bg-gradient-primary flex items-center justify-center flex-shrink-0 font-bold text-background text-xl shadow-lg">
+                    {selectedTestimonial.name
+                      .split(' ')
+                      .map(n => n[0])
+                      .join('')
+                      .toUpperCase()
+                      .slice(0, 2)}
+                  </div>
+                  <div className="flex-1">
+                    <DialogTitle className="text-2xl font-bold mb-1">
+                      {selectedTestimonial.name}
+                    </DialogTitle>
+                    {selectedTestimonial.role && (
+                      <DialogDescription className="text-base">
+                        {selectedTestimonial.role}
+                      </DialogDescription>
+                    )}
+                  </div>
+                </div>
+              </DialogHeader>
+              
+              <div className="space-y-4">
+                {/* Rating */}
+                {selectedTestimonial.rating !== null && selectedTestimonial.rating !== undefined && (
+                  <div className="flex gap-1">
+                    {[...Array(Math.min(selectedTestimonial.rating, 5))].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        className="w-5 h-5 fill-accent text-accent"
+                      />
+                    ))}
+                  </div>
+                )}
+                
+                {/* Full Comment Text */}
+                <div className="bg-secondary/30 rounded-xl p-6 border border-border/50">
+                  <div className="flex items-start gap-3">
+                    <Quote className="w-6 h-6 text-primary rotate-180 flex-shrink-0 mt-1" />
+                    <p className="text-base md:text-lg leading-relaxed text-foreground">
+                      {selectedTestimonial.content}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

@@ -84,13 +84,18 @@ const Footer = () => {
             <h4 className="font-semibold text-lg mb-4">{t('footer', 'quickLinks')}</h4>
             <ul className="space-y-2">
               <li>
+                <a href="#about" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t('nav', 'about')}
+                </a>
+              </li>
+              <li>
                 <a href="#programs" className="text-muted-foreground hover:text-accent transition-colors">
                   {t('nav', 'programs')}
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-muted-foreground hover:text-accent transition-colors">
-                  {t('nav', 'about')}
+                <a href="#why-choose-us" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t('nav', 'whyChooseUs')}
                 </a>
               </li>
               <li>
@@ -99,8 +104,13 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#cta" className="text-muted-foreground hover:text-accent transition-colors">
-                  {t('nav', 'applyNow')}
+                <a href="#gallery" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t('nav', 'gallery')}
+                </a>
+              </li>
+              <li>
+                <a href="#contact" className="text-muted-foreground hover:text-accent transition-colors">
+                  {t('nav', 'contact')}
                 </a>
               </li>
             </ul>

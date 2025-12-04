@@ -165,7 +165,7 @@ const Programs = () => {
             {programs.map((program, index) => (
             <div 
               key={program.title || index}
-              className="bg-card rounded-2xl p-8 shadow-card hover:shadow-glow transition-all duration-300 group hover:scale-105 animate-scale-in"
+              className="bg-card rounded-2xl p-8 shadow-card hover:shadow-glow transition-all duration-300 group hover:scale-105 animate-scale-in flex flex-col h-full"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className={`w-20 h-20 rounded-2xl ${program.icon && program.icon.endsWith('.svg') ? 'bg-transparent' : `bg-gradient-to-br ${program.gradient}`} p-4 mb-6 group-hover:scale-110 transition-transform flex items-center justify-center`}>
@@ -180,7 +180,7 @@ const Programs = () => {
               </div>
               
               <h3 className="text-2xl font-bold mb-4">{program.title}</h3>
-              <p className="text-muted-foreground mb-6">{program.description}</p>
+              <p className="text-muted-foreground mb-6 flex-grow">{program.description}</p>
               
               <div className="space-y-2 mb-8">
                 {program.topics && program.topics.length > 0 ? (
@@ -193,7 +193,7 @@ const Programs = () => {
                 ) : null}
               </div>
               
-              <Button variant="outline" className="w-full group-hover:bg-accent/10">
+              <Button variant="outline" className="w-full group-hover:bg-accent/10 mt-auto">
                 {t('programs', 'learnMore')}
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
