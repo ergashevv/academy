@@ -79,7 +79,7 @@ const Footer = () => {
   return (
     <footer className="bg-secondary/50 border-t border-border py-12 px-4">
       <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
+        <div className="grid md:grid-cols-3 gap-8 mb-8 items-start">
           <div>
             <h4 className="font-semibold text-lg mb-4">{t('footer', 'quickLinks')}</h4>
             <ul className="space-y-2">
@@ -143,7 +143,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold text-lg mb-4">{t('footer', 'followUs')}</h4>
             {socialLinks.length > 0 ? (
-              <ul className="space-y-2">
+              <ul className="space-y-2 mb-4">
                 {socialLinks.map((social, index) => (
                   <li key={index}>
                     <a 
@@ -157,9 +157,50 @@ const Footer = () => {
                   </li>
                 ))}
               </ul>
-            ) : (
-              <p className="text-muted-foreground text-sm">Our Location</p>
-            )}
+            ) : null}
+            
+            {/* Yandex Map */}
+            <div className="w-full rounded-xl overflow-hidden shadow-card aspect-[4/3]">
+              <div style={{ position: 'relative', overflow: 'hidden', width: '100%', height: '100%', minHeight: '200px' }}>
+                <a 
+                  href="https://yandex.uz/maps/10335/tashkent/?utm_medium=mapframe&utm_source=maps" 
+                  style={{ 
+                    color: '#eee', 
+                    fontSize: '12px', 
+                    position: 'absolute', 
+                    top: '0px',
+                    zIndex: 1,
+                    pointerEvents: 'none',
+                    opacity: 0
+                  }}
+                >
+                  Ташкент
+                </a>
+                <a 
+                  href="https://yandex.uz/maps/10335/tashkent/?from=mapframe&ll=69.202581%2C41.352239&mode=routes&rtext=~41.351940%2C69.202419&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DIgoNo2eKQhVjaCVC&source=mapframe&utm_medium=mapframe&utm_source=maps&z=17" 
+                  style={{ 
+                    color: '#eee', 
+                    fontSize: '12px', 
+                    position: 'absolute', 
+                    top: '14px',
+                    zIndex: 1,
+                    pointerEvents: 'none',
+                    opacity: 0
+                  }}
+                >
+                  махаллинский сход граждан Зиёкор: как доехать на автомобиле, общественным транспортом или пешком – Яндекс Карты
+                </a>
+                <iframe 
+                  src="https://yandex.uz/map-widget/v1/?from=mapframe&ll=69.202581%2C41.352239&mode=routes&rtext=~41.351940%2C69.202419&rtt=auto&ruri=~ymapsbm1%3A%2F%2Fgeo%3Fdata%3DIgoNo2eKQhVjaCVC&source=mapframe&utm_source=mapframe&z=17" 
+                  width="100%" 
+                  height="100%" 
+                  frameBorder="0" 
+                  allowFullScreen={true}
+                  style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', border: 'none', borderRadius: '0.75rem' }}
+                  title="Location Map"
+                />
+              </div>
+            </div>
           </div>
         </div>
         

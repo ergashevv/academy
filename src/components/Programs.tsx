@@ -56,6 +56,32 @@ const Programs = () => {
     return icons[index % 3];
   };
 
+  // Function to get course sort order (Frontend -> Backend -> AI)
+  const getCourseSortOrder = (courseName: string): number => {
+    const nameLower = courseName.toLowerCase().trim();
+    
+    if (nameLower.includes('frontend') || nameLower.includes('front-end') || 
+        nameLower.includes('front end') || nameLower.includes('фронтенд') ||
+        nameLower.includes('front')) {
+      return 1; // Frontend first
+    }
+    
+    if (nameLower.includes('backend') || nameLower.includes('back-end') || 
+        nameLower.includes('back end') || nameLower.includes('бэкенд') ||
+        (nameLower.includes('back') && !nameLower.includes('front'))) {
+      return 2; // Backend second
+    }
+    
+    if (nameLower.includes('ai') || nameLower.includes('artificial intelligence') || 
+        nameLower.includes('machine learning') || nameLower.includes('ml') ||
+        nameLower.includes('neural') || nameLower.includes('intelligence') ||
+        nameLower.includes('искусственный интеллект') || nameLower.includes('sun\'iy intellekt')) {
+      return 3; // AI third
+    }
+    
+    return 999; // Unknown courses at the end
+  };
+
   // Extract all courses from API data only
   let programs: Array<{
     title: string;
@@ -78,10 +104,11 @@ const Programs = () => {
     coursesData.forEach((titleCourse) => {
       if (titleCourse.courses && Array.isArray(titleCourse.courses)) {
         titleCourse.courses.forEach((course) => {
-          if (course.title || course.description) {
+          if (course.course_name || course.title || course.description) {
             allCourses.push({
               ...course,
-              icon: course.icon || getCourseIcon(course.title || '', allCourses.length),
+              title: course.course_name || course.title || '',
+              icon: course.icon || getCourseIcon(course.course_name || course.title || '', allCourses.length),
               gradient: gradients[allCourses.length % gradients.length],
               topics: Array.isArray(course.topics) ? course.topics : (course.topics ? [course.topics] : []),
             });
@@ -91,11 +118,18 @@ const Programs = () => {
     });
     
     if (allCourses.length > 0) {
-      programs = allCourses.map((course, index) => ({
-        title: course.title || '',
+      // Sort courses: Frontend -> Backend -> AI
+      const sortedCourses = [...allCourses].sort((a, b) => {
+        const orderA = getCourseSortOrder(a.course_name || a.title || '');
+        const orderB = getCourseSortOrder(b.course_name || b.title || '');
+        return orderA - orderB;
+      });
+      
+      programs = sortedCourses.map((course, index) => ({
+        title: course.course_name || course.title || '',
         description: course.description || '',
         topics: Array.isArray(course.topics) ? course.topics : [],
-        icon: course.icon || getCourseIcon(course.title || '', index),
+        icon: course.icon || getCourseIcon(course.course_name || course.title || '', index),
         gradient: course.gradient || gradients[index % gradients.length],
       }));
     }
@@ -179,7 +213,6 @@ const Programs = () => {
                 />
               </div>
               
-              <h3 className="text-2xl font-bold mb-4">{program.title}</h3>
               <p className="text-muted-foreground mb-6 flex-grow">{program.description}</p>
               
               <div className="space-y-2 mb-8">

@@ -17,8 +17,11 @@ export const translations = {
     },
     // About
     about: {
-      defaultTitle: "Nima uchun offline o'qish?",
-      defaultDescription: "Shaxsiy mentorlik, amaliy loyihalar va qo'llab-quvvatlovchi o'quv hamjamiyati bilan shaxsiy ta'lim kuchini bosing.",
+      defaultTitle: "Biz haqimizda",
+      defaultDescription: "UFT Academy (Unique Future Technology) - kelajakdagi IT mutaxassislarini tayyorlashga bag'ishlangan akademiya. Biz amaliy o'qitish, ekspert rahbarlik va sanoatga moslashtirilgan dasturiy ta'minot ta'limi orqali talabalarni zamonaviy texnologiyalar, dasturiy ta'minot va raqamli yechimlar bo'yicha amaliy bilimlar bilan ta'minlaymiz. Biz talabalarni tez o'zgarib turuvchi texnologik dunyoda muvaffaqiyatga tayyorlaymiz va bilimni real ko'nikmalarga aylantirib, kelajakdagi innovatorlarni shakllantiramiz.",
+      statsProjects: "O'quvchilar amalga oshirgan loyihalar",
+      statsGraduates: "Muvaffaqiyatli ishga joylashgan bitiruvchilar",
+      statsTotalGraduates: "Bitiruvchilar",
     },
     // Programs
     programs: {
@@ -91,8 +94,11 @@ export const translations = {
     },
     // About
     about: {
-      defaultTitle: "Почему офлайн обучение?",
-      defaultDescription: "Испытайте силу личного образования с индивидуальным наставничеством, практическими проектами и поддерживающим учебным сообществом.",
+      defaultTitle: "О нас",
+      defaultDescription: "UFT Academy (Unique Future Technology) - академия, посвященная подготовке следующего поколения IT-специалистов. Мы обеспечиваем студентов практическими знаниями в области передовых технологий, программного обеспечения и цифровых решений через практическое обучение, экспертное руководство и образование в области программного обеспечения, соответствующее отраслевым стандартам. Мы готовим студентов к успеху в быстро меняющемся технологическом мире и превращаем знания в реальные навыки, формируя будущих новаторов.",
+      statsProjects: "Проекты, выполненные студентами",
+      statsGraduates: "Успешно трудоустроенные выпускники",
+      statsTotalGraduates: "Выпускники",
     },
     // Programs
     programs: {
@@ -165,8 +171,11 @@ export const translations = {
     },
     // About
     about: {
-      defaultTitle: "Why Offline Learning?",
-      defaultDescription: "Experience the power of in-person education with dedicated mentorship, hands-on projects, and a supportive learning community.",
+      defaultTitle: "About Us",
+      defaultDescription: "UFT Academy (Unique Future Technology) - an academy dedicated to preparing the next generation of IT specialists. We provide students with practical knowledge in advanced technologies, software, and digital solutions through practical training, expert guidance, and industry-aligned software education. We prepare students for success in the rapidly evolving tech world and transform knowledge into real-world skills to shape future innovators.",
+      statsProjects: "Projects completed by students",
+      statsGraduates: "Graduates successfully employed",
+      statsTotalGraduates: "Graduates",
     },
     // Programs
     programs: {
