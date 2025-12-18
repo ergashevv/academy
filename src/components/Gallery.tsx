@@ -176,17 +176,18 @@ const Gallery = () => {
                 const isActive = current === index;
                 return (
                 <CarouselItem key={image.id || index} className="pl-2 md:pl-4 md:basis-1/2 lg:basis-1/3">
-                  <div 
-                    onClick={() => {
-                      setSelectedImageIndex(index);
-                      setIsModalOpen(true);
-                    }}
-                    className={`group relative overflow-hidden rounded-2xl shadow-card transition-all duration-700 aspect-[4/3] cursor-pointer ${
-                      isActive 
-                        ? 'scale-110 shadow-glow border-2 border-primary/50 -translate-y-2 z-10' 
-                        : 'scale-100 hover:shadow-glow hover:scale-105 opacity-80'
-                    }`}
-                  >
+                  <div className="p-2 transition-all duration-500">
+                    <div
+                      onClick={() => {
+                        setSelectedImageIndex(index);
+                        setIsModalOpen(true);
+                      }}
+                      className={`group relative overflow-hidden rounded-2xl transition-all duration-500 aspect-[4/3] cursor-pointer ${
+                        isActive
+                          ? 'scale-105 shadow-glow border-2 border-primary/50 -translate-y-1'
+                          : 'scale-100 shadow-card hover:shadow-glow hover:scale-[1.02] opacity-80 hover:opacity-100'
+                      }`}
+                    >
                     {isActive && (
                       <>
                         <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/10 via-transparent to-primary/5 pointer-events-none z-10" />
@@ -225,6 +226,7 @@ const Gallery = () => {
                         <p className="text-white text-sm line-clamp-2">{image.alt}</p>
                       </div>
                     )}
+                    </div>
                   </div>
                 </CarouselItem>
               );

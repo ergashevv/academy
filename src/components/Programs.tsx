@@ -2,11 +2,27 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useCourses } from "@/hooks/use-api";
 import { useTranslation } from "@/hooks/use-translation";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { useState } from "react";
 
 const Programs = () => {
   const { data: coursesData, isLoading } = useCourses();
   const { t } = useTranslation();
-  
+  const [selectedCourse, setSelectedCourse] = useState<{
+    title: string;
+    description: string;
+    topics: string[];
+    icon: string;
+    gradient: string;
+  } | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const gradients = [
     "from-blue-500/20 to-cyan-500/20",
     "from-teal-500/20 to-green-500/20",
@@ -226,7 +242,14 @@ const Programs = () => {
                 ) : null}
               </div>
               
-              <Button variant="outline" className="w-full group-hover:bg-accent/10 mt-auto">
+              <Button
+                variant="cta"
+                className="w-full mt-auto"
+                onClick={() => {
+                  setSelectedCourse(program);
+                  setIsModalOpen(true);
+                }}
+              >
                 {t('programs', 'learnMore')}
                 <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Button>
@@ -241,6 +264,69 @@ const Programs = () => {
           )
         )}
       </div>
+
+      {/* Course Details Modal */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-2xl bg-card border-border max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-3xl font-bold flex items-center gap-4">
+              {selectedCourse && (
+                <>
+                  <div className={`w-16 h-16 rounded-2xl ${selectedCourse.icon && selectedCourse.icon.endsWith('.svg') ? 'bg-transparent' : `bg-gradient-to-br ${selectedCourse.gradient}`} p-3 flex items-center justify-center shrink-0`}>
+                    <img
+                      src={selectedCourse.icon}
+                      alt={selectedCourse.title}
+                      className="w-full h-full object-contain"
+                    />
+                  </div>
+                  <span>{selectedCourse.title}</span>
+                </>
+              )}
+            </DialogTitle>
+            <DialogDescription className="text-lg text-muted-foreground mt-4">
+              {selectedCourse?.description}
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="mt-6">
+            <h3 className="text-xl font-semibold mb-4">{t('programs', 'topics') || 'Mavzular'}</h3>
+            <div className="space-y-3">
+              {selectedCourse?.topics && selectedCourse.topics.length > 0 ? (
+                selectedCourse.topics.map((topic, index) => (
+                  <div key={index} className="flex items-start gap-3 p-3 rounded-lg bg-secondary/50 hover:bg-secondary transition-colors">
+                    <div className="w-2 h-2 rounded-full bg-accent mt-2 shrink-0" />
+                    <span className="text-foreground">{topic}</span>
+                  </div>
+                ))
+              ) : (
+                <p className="text-muted-foreground">{t('common', 'noData')}</p>
+              )}
+            </div>
+          </div>
+
+          <div className="mt-8 flex gap-3">
+            <Button
+              variant="cta"
+              onClick={() => setIsModalOpen(false)}
+              className="flex-1"
+            >
+              {t('application', 'cancel') || 'Yopish'}
+            </Button>
+            <Button
+              variant="cta"
+              onClick={() => {
+                setIsModalOpen(false);
+                // Optionally open application modal here
+                const applyButton = document.querySelector('[class*="shadow-glow"]') as HTMLButtonElement;
+                if (applyButton) applyButton.click();
+              }}
+              className="flex-1"
+            >
+              {t('nav', 'applyNow') || 'Ariza berish'}
+            </Button>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

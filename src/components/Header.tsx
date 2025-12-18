@@ -158,7 +158,7 @@ const Header = () => {
 
           {/* Language & CTA */}
           <div className="flex items-center gap-3">
-            <DropdownMenu>
+            <DropdownMenu modal={false}>
               <DropdownMenuTrigger asChild>
                 <button className="flex items-center gap-2 px-4 py-2 rounded-xl border-2 border-primary bg-background hover:bg-primary/10 transition-colors text-foreground font-medium">
                   {language}
@@ -284,7 +284,7 @@ const Header = () => {
               <div className="flex gap-3 pt-2">
                 <Button
                   type="button"
-                  variant="outline"
+                  variant="cta"
                   onClick={() => {
                     setIsApplicationModalOpen(false);
                     setFormData({ fullName: '', phone: '', question: '' });
@@ -292,7 +292,7 @@ const Header = () => {
                     setTypingText("");
                   }}
                   disabled={isSubmitting}
-                  className="flex-1 h-12 border border-[#00FF88] text-[#00FF88] bg-transparent hover:bg-[#00FF88]/10 rounded-lg font-medium transition-all"
+                  className="flex-1 h-12 rounded-lg font-medium transition-all"
                 >
                   {t('application', 'cancel')}
                 </Button>
@@ -300,7 +300,7 @@ const Header = () => {
                   type="submit"
                   variant="cta"
                   disabled={isSubmitting}
-                  className="flex-1 h-12 bg-[#00FF88] hover:bg-[#00E67A] text-white rounded-lg font-semibold transition-all shadow-lg"
+                  className="flex-1 h-12 rounded-lg font-semibold transition-all"
                 >
                   {isSubmitting ? 'Yuborilmoqda...' : t('application', 'submit')}
                 </Button>

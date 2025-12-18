@@ -33,6 +33,14 @@ export const translations = {
     whyChooseUs: {
       defaultTitle: "Nima uchun bizni tanlashadi?",
       defaultDescription: "Biz sizning muvaffaqiyatingizga sodiqmiz va texnologiya karyera maqsadlaringizga erishishga yordam beradigan xususiyatlar va qo'llab-quvvatlash bilan.",
+      feature1Title: "Kichik guruh o'lchamlari",
+      feature1Description: "Har bir sinfda maksimal 15 talaba shaxsiy e'tibor va har bir kishi uchun optimal o'rganish sur'atini ta'minlaydi.",
+      feature2Title: "Amaliy loyihalar",
+      feature2Description: "Birinchi kundan boshlab real dunyo ilovalarini yarating. Ish beruvchilarni hayratda qoldiradigan portfolio bilan bitiruv oling.",
+      feature3Title: "Maxsus mentorlik",
+      feature3Description: "Har bir talaba o'quv jarayoni va martaba maqsadlari bo'yicha yo'l ko'rsatadigan shaxsiy mentorga ega bo'ladi.",
+      feature4Title: "Martaba qo'llab-quvvatlashi",
+      feature4Description: "Rezyume tuzish, intervyuga tayyorlov va ish topishda yordam. Biz sizga orzu qilgan texnologik ishga joylashishingizda yordam beramiz.",
     },
     // Testimonials
     testimonials: {
@@ -49,7 +57,7 @@ export const translations = {
       quickLinks: "Tezkor havolalar",
       contactUs: "Biz bilan bog'laning",
       ourLocation: "Bizning manzilimiz",
-      followUs: "Bizni kuzatib boring",
+      followUs: "Bizning manzilim",
       copyright: "Barcha huquqlar himoyalangan.",
     },
     // Final CTA
@@ -110,6 +118,14 @@ export const translations = {
     whyChooseUs: {
       defaultTitle: "Почему выбирают нас?",
       defaultDescription: "Мы привержены вашему успеху с функциями и поддержкой, разработанными для достижения ваших целей в технологической карьере.",
+      feature1Title: "Небольшие размеры групп",
+      feature1Description: "Максимум 15 студентов в каждом классе обеспечивает персонализированное внимание и оптимальный темп обучения для всех.",
+      feature2Title: "Практические проекты",
+      feature2Description: "Создавайте реальные приложения с первого дня. Выпускайтесь с портфолио, которое впечатляет работодателей.",
+      feature3Title: "Персональное наставничество",
+      feature3Description: "Каждый студент получает личного наставника, который направляет его на протяжении всего учебного процесса и карьерных целей.",
+      feature4Title: "Карьерная поддержка",
+      feature4Description: "Составление резюме, подготовка к собеседованию и помощь в трудоустройстве. Мы поможем вам получить работу вашей мечты в сфере технологий.",
     },
     // Testimonials
     testimonials: {
@@ -187,6 +203,14 @@ export const translations = {
     whyChooseUs: {
       defaultTitle: "Why Choose Us?",
       defaultDescription: "We're committed to your success with features and support designed to help you achieve your tech career goals.",
+      feature1Title: "Small Class Sizes",
+      feature1Description: "Maximum 15 students per class ensures personalized attention and optimal learning pace for everyone.",
+      feature2Title: "Practical Projects",
+      feature2Description: "Build real-world applications from day one. Graduate with a portfolio that impresses employers.",
+      feature3Title: "Dedicated Mentorship",
+      feature3Description: "Every student gets a personal mentor who guides them through their learning journey and career goals.",
+      feature4Title: "Career Support",
+      feature4Description: "Resume building, interview prep, and job placement assistance. We help you land your dream tech job.",
     },
     // Testimonials
     testimonials: {

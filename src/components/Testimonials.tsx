@@ -180,16 +180,16 @@ const Testimonials = () => {
                     .slice(0, 2);
                   
                   return (
-                  <CarouselItem 
-                    key={testimonial.id || index} 
+                  <CarouselItem
+                    key={testimonial.id || index}
                     className="pl-2 md:pl-4 basis-full md:basis-1/2 lg:basis-1/3"
                   >
-                    <div 
+                    <div
                       onClick={() => {
                         setSelectedTestimonial(testimonial);
                         setIsModalOpen(true);
                       }}
-                      className={`bg-card rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-7 transition-all duration-500 ease-out flex flex-col group relative overflow-hidden h-full cursor-pointer ${
+                      className={`bg-card rounded-2xl md:rounded-3xl p-5 md:p-6 lg:p-7 transition-all duration-500 ease-out flex flex-col group relative overflow-hidden cursor-pointer min-h-[380px] md:min-h-[420px] ${
                         isActive 
                           ? 'scale-[1.03] md:scale-[1.05] border-2 border-primary/60 -translate-y-1 md:-translate-y-2 z-20 opacity-100' 
                           : isPrev || isNext

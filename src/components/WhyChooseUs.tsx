@@ -91,43 +91,49 @@ const WhyChooseUs = () => {
     );
   }
 
+  const gradients = [
+    "from-blue-500/20 to-cyan-500/20",
+    "from-green-500/20 to-emerald-500/20",
+    "from-purple-500/20 to-pink-500/20",
+    "from-orange-500/20 to-red-500/20",
+  ];
+
   return (
-    <section className="py-20 px-4">
+    <section id="why-choose-us" className="py-20 px-4 bg-[#0D1F1C]">
       <div className="container mx-auto max-w-6xl">
         {(sectionTitle || sectionDescription) && (
           <div className="text-center mb-16 animate-fade-in">
             {sectionTitle && (
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
                 {sectionTitle}
               </h2>
             )}
             {sectionDescription && (
-              <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
                 {sectionDescription}
               </p>
             )}
           </div>
         )}
-        
+
         {features.length > 0 ? (
           <div className="grid md:grid-cols-2 gap-8">
             {features.map((feature, index) => {
               const Icon = feature.icon;
+              const gradient = gradients[index % gradients.length];
               return (
-                <div 
+                <div
                   key={feature.title || index}
-                  className="bg-card rounded-2xl p-8 shadow-card hover:shadow-glow transition-all duration-300 animate-scale-in"
+                  className="bg-[#1A2B2F] rounded-2xl p-8 shadow-card hover:shadow-glow transition-all duration-300 animate-scale-in border border-[#2A3B3F]"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="flex items-start gap-6">
-                    <div className="w-14 h-14 bg-gradient-primary rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Icon className="w-7 h-7 text-background" />
-                    </div>
-                    <div>
-                      <h3 className="text-2xl font-semibold mb-3">{feature.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">{feature.description}</p>
+                  <div className="mb-6">
+                    <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${gradient} p-4 inline-flex items-center justify-center`}>
+                      <Icon className="w-full h-full text-accent" strokeWidth={1.5} />
                     </div>
                   </div>
+                  <h3 className="text-2xl font-bold mb-3 text-white">{feature.title}</h3>
+                  <p className="text-gray-400 leading-relaxed">{feature.description}</p>
                 </div>
               );
             })}
